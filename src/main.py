@@ -1,20 +1,21 @@
 # I am switching this to python as I feel like it will make more sense in the scope of it all
-import mysql.connector
-cnx = mysql.connector.connect(user="remoteUser", password='root', host='192.168.1.193',  database="librarySystem")
-c = cnx.cursor()
-print(c.execute("SELECT * FROM users;"))
-cnx.close()
+ #threading.Thread(target= lambda: winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS)).start() 
+# Above is me just testing some code since I haven't touched the above in a while
 
 # Remove above code when needed
 from tkinter import *
 import winsound
 import threading 
 import sys
+import tools
 
 class Menu(Frame):
+
     def __init__(self, parent=None):
         Frame.__init__(self,parent)
         self.pack()
+        self.username = ""
+        self.db = tools.DBConnection()
 
     def makeMenu(self): # This is going to edit the root itself as we want that to always have the menu. I might change this later. The idea right now is that buttons will open toplevel Tk's
         sysLabel = Label(self, text="Library Management System")
@@ -35,9 +36,16 @@ class Menu(Frame):
     def login():
         top = Toplevel()
         top.title("Account Set up/Sign in")
-        #threading.Thread(target= lambda: winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS)).start() 
-        # ABove is me just testing some code since I haven't touched the above in a while
-    
+        usernameLabel = Label(top,text="Username: ")
+        usernameEntry = Entry(top)
+        passwordLabel = Label(top, text="Password")
+        passwordEntry = Entry(top)
+        signinButton = Button(top, text="Sign in")
+        signupButton = Button(top, text="Sign up")
+        usernameLabel.pack()
+        usernameEntry.pack()
+        passwordLabel.pack()
+        passwordEntry.pack()
 
 class EventHandler():
     pass
