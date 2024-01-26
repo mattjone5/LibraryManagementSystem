@@ -54,7 +54,7 @@ class Menu(Frame):
         passwordLabel = Label(top, text="Password")
         passwordEntry = Entry(top, textvariable=password, show="*")
         signinButton = Button(top, text="Sign in", command=lambda: Menu.checkSignin(username, password, top))
-        signupButton = Button(top, text="Sign up")
+        signupButton = Button(top, text="Sign up", command = Menu.signup)
         usernameLabel.pack()
         usernameEntry.pack()
         passwordLabel.pack()
@@ -63,7 +63,29 @@ class Menu(Frame):
         signupButton.pack()
 
     def signup():
-        pass
+        top = Toplevel()
+        username = StringVar()
+        password = StringVar()
+        cpassword = StringVar()
+        birthday = StringVar()
+        email = StringVar()
+        phoneNumber = StringVar()
+        top.title("Create an account")
+        usernameLabel = Label(top, text="Username: ")
+        usernameEntry = Entry(top, textvariable=username)
+        passwordLabel = Label(top, text="Password")
+        passwordEntry = Entry(top, textvariable=password, show="*")
+        confirmpasswordLabel = Label(top, text="Confirm Password")
+        confirmpasswordEntry = Entry(top, textvariable=cpassword, show="*")
+        birthdayLabel = Label(top, text="Birthday")
+        birthdayEntry = Entry(top, textvariable=birthday)
+        emailLabel = Label(top, text="Email: ")
+        emailEntry = Entry(top, textvariable=email)
+        phoneNumberLabel = Label(top, text="Phone Number:")
+        phoneNumberEntry = Entry(top, textvariable=phoneNumber)
+        vars = [usernameLabel,usernameEntry,passwordLabel,passwordEntry,confirmpasswordLabel,confirmpasswordEntry,birthdayLabel,birthdayEntry,emailLabel,emailEntry,phoneNumberLabel,phoneNumberEntry]
+        for thing in vars:
+            thing.pack()
 
 if __name__ == "__main__":
     root = Tk()
